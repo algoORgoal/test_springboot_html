@@ -24,15 +24,32 @@
             $("button").click(function () {
                 $.get("http://localhost:8080/remote/openweather", function (data) {
                     $.map(data, function (value, key) {
-                        value_element = "<td>" + value + "</td>";
+
                         key_element = "<td>" + key + "</td>";
-                        both_element = "<tr>" + key_element + value_element + "</tr>"
                         type_value = typeof value;
-                        $("#weather-map").append(both_element + type_value);
+                        if (typeof value != "string") {
+                            console.log(value);
+                            value_element = "<td>";
+                            $.map(value, function (value2, key2) {
+                                value_element += key2 + " : " + value2 + " ";
+                            })
+                            value_element += "</td>"
+                        }
+                        else if (typeof value == "number") {
+                            value_element = "<td>" + value.toString(); + "</td>";
+                        }
+                        else {
+                            console.log("ohter case: " + value);
+                            value_element = "<td>" + value + "</td>";
+
+                        }
+                        both_element = "<tr>" + key_element + value_element + "</tr>"
+                        $("#weather-map").append(both_element);
                     })
                 })
             })
         })
+
     </script>
 </head>
 
