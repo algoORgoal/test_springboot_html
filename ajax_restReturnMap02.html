@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -19,21 +20,32 @@
             $("button").click(function () {
                 $.get("http://localhost:8080/ws/organization02", function (data) {
                     $.map(data, function (value, key) {
-                        var start_p = "<p>";
-                        var end_p = "</p>";
-                        var member_info = start_p + key + ':' + value;
+                        var member_info = "<tr>" + "<td>" + key + "</td>" + "<td>" + value + "</td>" + "</tr>";
                         $("#members").append(member_info);
-                    })
+                    });
                 });
             });
         });
+
+
     </script>
 </head>
 
 <body>
     <div class="container">
-        <button>Click it!</button>
-        <div id="members"></div>
+        <button class="btn btn-primary">Click it!</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>id</th>
+                </tr>
+            </thead>
+            <tbody id="members">
+                srhssdh
+
+            </tbody>
+        </table>
     </div>
 </body>
 
