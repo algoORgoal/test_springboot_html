@@ -27,7 +27,8 @@
                 console.log(data);
                 for (var x in data) {
                     var parsed_data = x + " : " + data[x];
-                    $("#text" + Object.keys(data).indexOf(x)).text(parsed_data);
+                    var index_of_data = Object.keys(data).indexOf(x);
+                    $("#text" + index_of_data).text(parsed_data);
                 }
             }
         });
