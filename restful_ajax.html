@@ -24,7 +24,11 @@
 
             success: function (data, status) {
                 alert("Data: " + data + "\nStatus:" + status);
-                $("#text").text(data);
+                console.log(data);
+                for (var x in data) {
+                    var parsed_data = x + " : " + data[x];
+                    $("#text" + Object.keys(data).indexOf(x)).text(parsed_data);
+                }
             }
         });
 
@@ -33,7 +37,8 @@
 
 <body>
     <div class="container">
-        <p id="text"></p>
+        <p id="text0"></p>
+        <p id="text1"></p>
     </div>
 </body>
 
